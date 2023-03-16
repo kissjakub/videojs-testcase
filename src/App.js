@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import VideoJS from "./VideoJS";
+import "./index.css";
 
-function App() {
+const VIDEOJS_OPTIONS = {
+  controls: true,
+  width: 480,
+  sources: [
+    {
+      src: "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
+      type: "application/x-mpegURL"
+    }
+  ]
+};
+
+export default function App() {
+  console.log("App.render");
+  useEffect(() => {
+    console.log("App.mount");
+    return () => console.log("App.unmount");
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Hello CodeSandbox</h1>
+      <VideoJS options={VIDEOJS_OPTIONS} />
     </div>
   );
 }
-
-export default App;
